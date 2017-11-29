@@ -11,7 +11,7 @@ namespace SportsStore.WebUI.Controllers
 {
     public class CartController : Controller
     {
-        // GET: Cart
+        // GET: Cart test
         private IProductRepository repository;
         public CartController(IProductRepository repo)
         {
