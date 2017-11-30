@@ -1,0 +1,64 @@
+﻿@model SportsStore.Domain.Entities.ShippingDetails
+
+@{
+    ViewBag.Title = "SportsStore: Checkout";
+}
+
+<h2>Check out now</h2>
+Please enter your details, and we'll ship your goods right away!
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <h3>Ship to</h3>
+    <div class=" form-group">
+        <label>Name:</label>
+         @Html.EditorFor(x => x.Name,new { @class="form-control"})
+    </div>
+    <h3>Address</h3>
+    foreach (var property in ViewData.ModelMetadata.Properties) {
+        if (property.PropertyName != "Name" && property.PropertyName != "GiftWrap") {
+            <div class=" form-group">
+                <label>@(property.DisplayName ?? property.PropertyName)</label>
+                @Html.TextBox(property.PropertyName,null, new { @class="form-control"})
+            </div>
+        }
+    }
+    @*<div class=" form-group">
+        <label>Line1:</label>
+        @Html.EditorFor(x => x.Line1, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Line2:</label>
+        @Html.EditorFor(x => x.Line2, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Line3:</label>
+        @Html.EditorFor(x => x.Line3, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>City:</label>
+        @Html.EditorFor(x => x.City, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>State:</label>
+        @Html.EditorFor(x => x.State, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Zip:</label>
+        @Html.EditorFor(x => x.Zip, new { @class = "form-control" })
+    </div>
+    <div class=" form-group">
+        <label>Country:</label>
+        @Html.EditorFor(x => x.Country, new { @class = "form-control" })
+    </div>*@
+    <h3>Option</h3>
+    <div class=" checkbox">
+        <label>
+            @Html.EditorFor(x => x.GiftWrap)
+            Gift wrap these items
+        </label>
+    </div>
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="Complete order" />
+    </div>
+} 
